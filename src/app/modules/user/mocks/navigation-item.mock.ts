@@ -1,4 +1,4 @@
-import { NavigationItem } from '../models/navigationItem.model';
+import { NavigationItem } from '../models/navigation-item.model';
 import { colors } from 'src/app/shared/colors/angular-material.color';
 
 export const navigationitems: NavigationItem[] = [

@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, shareReplay } from 'rxjs/operators';
-import { NavigationItem } from '../../models/navigationItem.model';
-import { navigationitems } from '../../mocks/navigationItem.mock';
+import { NavigationItem } from '../../models/navigation-item.model';
+import { navigationitems } from '../../mocks/navigation-item.mock';
 import { environment } from 'src/environments/environment';
 
 @Component({

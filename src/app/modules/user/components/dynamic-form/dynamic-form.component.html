@@ -1,1 +1,42 @@
-<p>dynamic-form works!</p>
+<form [formGroup]="formGroupData">
+  <div *ngFor="let formElement of formData">
+    <div [ngSwitch]="formElement.type">
+      <div *ngSwitchCase="'textBox'">
+        <mat-form-field class="example-full-width">
+          <mat-label>Text</mat-label>
+          <input
+            matInput
+            value=""
+            [type]="formElement.type"
+            formControlName="{{ formElement.label }}"
+          />
+        </mat-form-field>
+      </div>
+      <div *ngSwitchCase="'number'">
+        <mat-form-field class="example-full-width">
+          <mat-label>Number</mat-label>
+          <input
+            matInput
+            value=""
+            [type]="formElement.type"
+            formControlName="{{ formElement.label }}"
+          />
+        </mat-form-field>
+      </div>
+      <div *ngSwitchCase="'select'">
+        <mat-form-field>
+          <mat-label>Options</mat-label>
+          <mat-select formControlName="{{ formElement.label }}">
+            <mat-option
+              *ngFor="let option of formElement.options"
+              [value]="option"
+            >
+              {{ option }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <button mat-button (click)="send()">Save</button>
+</form>
