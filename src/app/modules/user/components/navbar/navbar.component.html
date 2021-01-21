@@ -1,0 +1,47 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'push' : 'over'"
+    [ngStyle]="{ 'min-width': (isHandset$ | async) ? '75%' : '250px' }"
+  >
+    <mat-toolbar
+      class="toolbar"
+      [color]="(isHandset$ | async) ? 'primary' : ''"
+    >
+      Menu
+    </mat-toolbar>
+    <mat-nav-list>
+      <ng-container *ngFor="let item of navigationItems">
+        <a
+          mat-list-item
+          [routerLink]="['/' + item.path]"
+          [ngStyle]="{
+            'background-color': item.backgroundColor,
+            color: item.color
+          }"
+        >
+          {{ item.name }}
+        </a>
+      </ng-container>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar class="bar-menu" color="accent">
+      <span> {{ title }} </span>
+      <span class="spacer"></span>
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+      >
+        <mat-icon aria-label="Side nav toggle icon"> menu </mat-icon>
+      </button>
+    </mat-toolbar>
+    <ng-content style="height: 100%"></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>
